@@ -15,5 +15,10 @@
   <%= @ticket.user_id %>
 </p>
 
+<hr>
+<h2>Comments</h2>
+<%= render @ticket.comments %>
+
+<hr>
 <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
 <%= link_to 'Back', tickets_path %>

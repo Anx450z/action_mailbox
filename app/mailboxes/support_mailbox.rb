@@ -2,7 +2,7 @@ class SupportMailbox < ApplicationMailbox
   def process
     return if user.nil?
 
-    Ticket.create(user: @user, title: mail.subject, body: mail.decoded)
+    Ticket.create(user: user, title: mail.subject, body: mail.decoded)
   end
 
   def user
