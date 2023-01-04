@@ -1,24 +1,40 @@
-# README
+# Instruction to get app running
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
 
-Things you may want to cover:
+git clone
+bundle install
+rails action_mailbox:install
+rails db:create
+rails db:migrate
 
-* Ruby version
+## Running the app
 
-* System dependencies
+rails s
 
-* Configuration
+## Create user
 
-* Database creation
+navigate to `localhost:3000/users/new` and create a new user.
 
-* Database initialization
+## Create a new ticket
 
-* How to run the test suite
+navigate to `http://localhost:3000/rails/conductor/action_mailbox/inbound_emails/new` and send mail in the following format:
 
-* Services (job queues, cache servers, search engines, etc.)
+- from : {user email}
+- to : support@example.com
+- subject : {subject of the mail}
+- body : {body of the mail}
 
-* Deployment instructions
+click on `Deliver inbound email`
+check the new ticket at `localhost:3000/tickets`
 
-* ...
+## Create a new comment under ticket
+
+navigate to `http://localhost:3000/rails/conductor/action_mailbox/inbound_emails/new` and send mail in the following format:
+
+- from : {user email}
+- to : support+{your user_id}@example.com
+- body : {body of the mail}
+
+click on `Deliver inbound email`
+check the new comment at `localhost:3000/tickets/{your user_id}`
